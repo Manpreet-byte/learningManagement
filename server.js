@@ -3,13 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const envPath = path.resolve(__dirname, '.env');
-const envExamplePath = path.resolve(__dirname, '.env.example');
 
 if (fs.existsSync(envPath)) {
   dotenv.config({ path: envPath });
-} else if (fs.existsSync(envExamplePath)) {
-  dotenv.config({ path: envExamplePath });
-  console.warn('Warning: Loaded environment from .env.example. Create .env for local development.');
 } else {
   dotenv.config();
 }
